@@ -1,4 +1,4 @@
-FROM alpine:3.12.7 as builder
+FROM alpine:3.15 as builder
 
 WORKDIR /var/build
 
@@ -10,7 +10,7 @@ RUN apk add --no-cache build-base git make cmake pkgconf autoconf libtool
 RUN git clone https://github.com/kd2bd/predict . \
     && echo "y" | ./configure
 
-FROM alpine:3.12.7
+FROM alpine:3.15
 
 RUN apk --no-cache add ncurses \
     && echo "predict    1210/udp" > /etc/services \
